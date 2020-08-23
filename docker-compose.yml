@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  main-postgres:
+    image: postgres
+    hostname: db
+    restart: always
+    env_file: .env.development
+    ports:
+      - 5432:5432
+    networks:
+      - development
+volumes:
+  dbdata:
+
+networks:
+  development:
+    driver: bridge
