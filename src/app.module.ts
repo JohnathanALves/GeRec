@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { EmpresaModule } from './empresa/empresa.module';
 import { DocumentoModule } from './documento/documento.module';
 import { UsuarioModule } from './usuario/usuario.module';
+import { ClienteModule } from './cliente/cliente.module';
 import databaseConfig from './config/database.config';
 
 @Module({
@@ -19,6 +20,7 @@ import databaseConfig from './config/database.config';
     EmpresaModule,
     DocumentoModule,
     UsuarioModule,
+    ClienteModule,
   ],
   providers: [ConfigService],
 })
