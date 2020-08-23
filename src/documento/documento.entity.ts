@@ -1,32 +1,52 @@
-import { Entity, Column, JoinColumn, OneToOne } from 'typeorm';
+import { Entity, Column, JoinColumn, OneToOne, OneToMany } from 'typeorm';
 import { Empresa } from 'src/empresa/empresa.entity';
 import { AbstractEntity } from 'src/common/abstractEntity';
 import { DocumentoTipo } from './documento-tipo.entity';
 import { Cliente } from 'src/cliente/cliente.entity';
+import { DocumentoParcela } from './documento-parcela.entity';
 
 @Entity()
 export class Documento extends AbstractEntity {
-  @OneToOne(type => Empresa)
-  @JoinColumn()
-  empresa: Empresa;
-
   @Column()
-  dataCriacao: Date;
+  emissao: Date;
 
   @Column()
   vencimento: Date;
 
-  @Column()
-  valorBruto: number;
+  @Column({
+    default: 0,
+  })
+  totalBruto: number;
 
-  @Column()
-  valorLiquido: number;
+  @Column({
+    default: 0,
+  })
+  totalLiquido: number;
 
-  @Column()
-  valorDescontos: number;
+  @Column({
+    default: 0,
+  })
+  totalDescontos: number;
 
-  @Column()
-  valorJuros: number;
+  @Column({
+    default: 0,
+  })
+  totalJuros: number;
+
+  @Column({
+    default: 0,
+  })
+  totalMulta: number;
+
+  @OneToMany(
+    type => DocumentoParcela,
+    parcelas => parcelas.documento,
+  )
+  parcelas: DocumentoParcela[];
+
+  @OneToOne(type => Empresa)
+  @JoinColumn()
+  empresa: Empresa;
 
   @OneToOne(type => Cliente)
   @JoinColumn()
