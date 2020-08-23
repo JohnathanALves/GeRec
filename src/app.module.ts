@@ -5,6 +5,7 @@ import { EmpresaModule } from './empresa/empresa.module';
 import { DocumentoModule } from './documento/documento.module';
 import { UsuarioModule } from './usuario/usuario.module';
 import { ClienteModule } from './cliente/cliente.module';
+import { BoletoModule } from './boleto/boleto.module';
 import databaseConfig from './config/database.config';
 
 @Module({
@@ -21,6 +22,7 @@ import databaseConfig from './config/database.config';
     DocumentoModule,
     UsuarioModule,
     ClienteModule,
+    BoletoModule,
   ],
   providers: [ConfigService],
 })
